@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -29,7 +29,11 @@ class Server {
         useUnifiedTopology: true,
         useCreateIndex: true,
       })
-      .then((db) => console.log("Db is conected"));
+      .then((db) => {
+        console.log(
+          `DB ${db.connections[0].name} is connected in host ${db.connections[0].host}`
+        );
+      });
     this.app.set("port", 3000);
 
     // Middlewares
