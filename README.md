@@ -10,9 +10,9 @@
 
 ## Requirements
 
-  * [Node.js][node] v12.18.1+
-  * [npm][npm] (normally comes with Node.js)
-  * [MongoDB] [https://www.mongodb.com/]
+  * [Node.js](https://nodejs.org/es/) v12.18.1+
+  * [npm](npmjs.com) (normally comes with Node.js)
+  * [MongoDB](https://www.mongodb.com/)
 
 ## Install
 
