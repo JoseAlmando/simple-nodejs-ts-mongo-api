@@ -8,6 +8,12 @@
 
 > API con TS, MongoDB y nodejs
 
+## Requirements
+
+  * [Node.js](https://nodejs.org/es/) v12.18.1+
+  * [npm](npmjs.com) (normally comes with Node.js)
+  * [MongoDB](https://www.mongodb.com/)
+
 ## Install
 
 ```sh
