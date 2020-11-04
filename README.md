@@ -25,7 +25,7 @@ npm run start
 👤 **José A. Dominique**
 
 * Github: [@JoseAlmando](https://github.com/JoseAlmando)
-* LinkedIn: [@Jose Almando](https://linkedin.com/in/Jose Almando)
+* LinkedIn: [@Jose Almando](https://linkedin.com/in/JoseAlmando)
 
 ## Show your support
 
