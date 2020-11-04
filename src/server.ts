@@ -34,7 +34,7 @@ class Server {
           `DB ${db.connections[0].name} is connected in host ${db.connections[0].host}`
         );
       });
-    this.app.set("port", 3000);
+    this.app.set("port", process.env.PORT || 3000);
 
     // Middlewares
     this.app.use(express.json());
