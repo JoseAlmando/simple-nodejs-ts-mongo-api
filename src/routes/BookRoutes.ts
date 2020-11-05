@@ -67,7 +67,7 @@ class BookRoutes {
       [body("ISBN").not().isEmpty().isLength({ min: 10 })],
       this.postBook
     );
-    this.router.put("/:ISBN", ,this.putBook);
+    this.router.put("/:ISBN", this.putBook);
     this.router.delete("/:ISBN", this.deleteBook);
   }
 }
