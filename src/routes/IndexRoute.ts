@@ -8,7 +8,14 @@ class IndexRoute {
   }
 
   getIndex = (req: Request, res: Response) => {
-    res.send("API avaible");
+    res.send(`
+          Rutas: 
+          GET /api/book
+          GET /api/book/:ISBN
+          POST /api/book
+          PUT /api/book/:ISBN
+          DELETE /api/book/:ISBN
+    `);
   };
 
   routes() {
