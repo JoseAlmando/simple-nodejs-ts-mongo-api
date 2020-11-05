@@ -11,13 +11,14 @@ class BookRoutes {
   }
 
   async getBooks(req: Request, res: Response) {
-    res.status(200).json(await BookModel.find({deletedAt: null}));
+    res.status(200).json(await BookModel.find({ deletedAt: null }));
   }
 
   async getBook(req: Request, res: Response) {
     const { ISBN } = req.params;
     const book = await BookModel.findOne({ ISBN });
-    res.status(200).json({ data: book });
+    if (book!=null) res.status(200).json({ data: book });
+    res.status(200).json({ error: "Libro no existente." });
   }
 
   async postBook(req: Request, res: Response) {
@@ -26,9 +27,13 @@ class BookRoutes {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const newBook: IBook = new BookModel(req.body);
-    const savedBook = await newBook.save();
-    res.json(savedBook);
+    try {
+      const newBook: IBook = new BookModel(req.body);
+      const savedBook = await newBook.save();
+      res.status(201).json(savedBook);
+    } catch {
+      res.status(409).json({error: "Ha enviado un recurso en blanco o que ya existe."})
+    }
   }
 
   async putBook(req: Request, res: Response) {
