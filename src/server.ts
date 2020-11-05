@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import passport from "passport";
 
 dotenv.config();
 
@@ -11,7 +12,8 @@ import cors from "cors";
 
 import IndexRoute from "./routes/IndexRoute";
 import BookRoutes from "./routes/BookRoutes";
-
+import UserRoutes from "./routes/UserRoutes";
+import passportMiddlewares from "./middlewares/passport";
 class Server {
   app: Application;
   constructor() {
@@ -43,11 +45,14 @@ class Server {
     this.app.use(compression());
     this.app.use(helmet());
     this.app.use(cors());
+    this.app.use(passport.initialize());
+    passport.use(passportMiddlewares);
   }
 
   routes() {
     this.app.use(IndexRoute);
     this.app.use("/api/book", BookRoutes);
+    this.app.use(UserRoutes);
   }
 
   start() {
