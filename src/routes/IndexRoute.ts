@@ -9,12 +9,12 @@ class IndexRoute {
 
   getIndex = (req: Request, res: Response) => {
     res.send(`
-          Rutas: 
+          Rutas: \n
           GET /api/book
-          GET /api/book/:ISBN
-          POST /api/book
-          PUT /api/book/:ISBN
-          DELETE /api/book/:ISBN
+          GET /api/book/:ISBN \n
+          POST /api/book \n
+          PUT /api/book/:ISBN \n
+          DELETE /api/book/:ISBN \n
     `);
   };
 
