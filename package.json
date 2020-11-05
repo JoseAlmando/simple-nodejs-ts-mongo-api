@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "build": "tsc",
-    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/server.js\""
+    "postinstall": "tsc", 
+    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/server.js\"",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
   },
   "keywords": [],
   "author": "Jose Dominique",
