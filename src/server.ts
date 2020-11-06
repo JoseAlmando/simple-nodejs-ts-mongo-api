@@ -14,6 +14,7 @@ import IndexRoute from "./routes/IndexRoute";
 import BookRoutes from "./routes/BookRoutes";
 import UserRoutes from "./routes/UserRoutes";
 import passportMiddlewares from "./middlewares/passport";
+import "./database/database";
 class Server {
   app: Application;
   constructor() {
@@ -23,19 +24,6 @@ class Server {
   }
 
   config() {
-    const MONGO_URL = "mongodb://localhost/test";
-    mongoose.set("useFindAndModify", true);
-    mongoose
-      .connect(process.env.MONGO_URL || MONGO_URL, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-      })
-      .then((db) => {
-        console.log(
-          `DB ${db.connections[0].name} is connected in host ${db.connections[0].host}`
-        );
-      });
     this.app.set("port", process.env.PORT || 3000);
 
     // Middlewares

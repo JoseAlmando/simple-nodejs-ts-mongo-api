@@ -2,7 +2,6 @@ import { Request, Response, Router } from "express";
 import { body, validationResult } from "express-validator";
 
 import BookModel, { IBook } from "../models/BookModel";
-import passport from 'passport';
 
 class BookRoutes {
   router: Router;
@@ -18,8 +17,8 @@ class BookRoutes {
   async getBook(req: Request, res: Response) {
     const { ISBN } = req.params;
     const book = await BookModel.findOne({ ISBN });
-    if (book!=null) res.status(200).json({ data: book });
-    res.status(200).json({ error: "Libro no existente." });
+    if (book != null) res.status(200).json({ data: book });
+    res.status(400).json({ error: "Libro no existente." });
   }
 
   async postBook(req: Request, res: Response) {
@@ -29,17 +28,26 @@ class BookRoutes {
     }
 
     try {
+      const book = await BookModel.findOne({ ISBN: req.body.ISBN });
+      if (book) res.status(400).json({ msg: "El libro ya existe" });
+
       const newBook: IBook = new BookModel(req.body);
       const savedBook = await newBook.save();
       res.status(201).json(savedBook);
     } catch {
-      res.status(409).json({error: "Ha enviado un recurso en blanco o que ya existe."})
+      res
+        .status(409)
+        .json({ error: "Ha enviado un recurso en blanco o que ya existe." });
     }
   }
 
   async putBook(req: Request, res: Response) {
     const { ISBN } = req.params;
     const { title, author, editorial } = req.body;
+
+    const book = await BookModel.findOne({ ISBN });
+    if (!book) res.status(400).json({ msg: "El libro no existe" });
+
     const updateBook = await BookModel.findOneAndUpdate(
       { ISBN },
       { title, author, editorial, updatedAt: Date.now() },
@@ -47,13 +55,15 @@ class BookRoutes {
         new: true,
       }
     );
-    res.json(updateBook);
+    res.status(200).json(updateBook);
   }
 
   async deleteBook(req: Request, res: Response) {
     const { ISBN } = req.params;
 
-    const { title, author, editorial } = req.body;
+    const book = await BookModel.findOne({ ISBN });
+    if (!book) res.status(400).json({ msg: "El libro no existe" });
+
     await BookModel.findOneAndUpdate({ ISBN }, { deletedAt: Date.now() });
     // await BookModel.findOneAndRemove({ ISBN });
     res.json({ data: `Libro con ISBN ${ISBN} eliminado correctamente` });
