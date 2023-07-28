@@ -8,15 +8,16 @@ class IndexRoute {
   }
 
   getIndex = (req: Request, res: Response) => {
-    
-    res.send(`
-          Rutas: 
-          GET /api/book
-          GET /api/book/:ISBN 
-          POST /api/book
-          PUT /api/book/:ISBN 
-          DELETE /api/book/:ISBN 
-    `);
+    const routes = {
+      book: [
+        "GET /api/book",
+        "GET /api/book/:ISBN",
+        "POST /api/book",
+        "PUT /api/book/:ISBN",
+        "DELETE /api/book/:ISBN",
+      ],
+    };
+    res.json(routes);
   };
 
   routes() {

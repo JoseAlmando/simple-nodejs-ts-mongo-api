@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "c2c883f4-1535-4669-9418-3681aabc2ccb",
+		"name": "APIBookTest 2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7601877"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "get books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/{{book}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{book}}"
+							]
+						},
+						"description": "Obtener todos los libros existentes"
+					},
+					"response": []
+				},
+				{
+					"name": "get book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/{{book}}/978-3-16-148410-0",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{book}}",
+								"978-3-16-148410-0"
+							]
+						},
+						"description": "Obtener un libro"
+					},
+					"response": []
+				},
+				{
+					"name": "GET users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTQ1NTlkNDY4ZGJmMGVhODUwODY2NiIsImVtYWlsIjoiam94YWxAam94dGVjaC5jb20iLCJpYXQiOjE2MDQ2MTI2MDcsImV4cCI6MTYwNDY5ODYwN30.HhUvxtuwBQBnGZZME0xe_065uD1iXZooCjycQveWapU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmYTQ1NTlkNDY4ZGJmMGVhODUwODY2NiIsImVtYWlsIjoiam94YWxAam94dGVjaC5jb20iLCJpYXQiOjE2MDQ2MTIwMzAsImV4cCI6MTYwNDY5ODAzMH0.vZkgDCCro8bGKob8IpheH9mlFlvwvC83av_xRujorCo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://simple-api-ts-mongo.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"simple-api-ts-mongo",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "PUT books",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Ciudad de papel\",\r\n    \"author\": \"John A. Green \",\r\n    \"editorial\": \"ROsas mundo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/{{book}}/978-3-16-148410-0",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{book}}",
+								"978-3-16-148410-0"
+							]
+						},
+						"description": "Actualizar libro"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "DELETE book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}:{{port}}/{{book}}/9788415594242",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{book}}",
+								"9788415594242"
+							]
+						},
+						"description": "Eliminar libro"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "POST book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \r\n        \"ISBN\": \"9788415594284\",\r\n        \"title\": \"Ciudades de Papel\",\r\n        \"author\": \"John Green\",\r\n        \"editorial\": \"Nube de tinta\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/{{book}}",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{book}}"
+							]
+						},
+						"description": "Enviar libro"
+					},
+					"response": []
+				},
+				{
+					"name": "POST user signUp",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joxalm\",\r\n    \"email\": \"joxal@joxtech.com\",\r\n    \"password\": \"joxalmpassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/signUp",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST user signIn",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "Application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"joxal@joxtech.com\",\r\n    \"password\": \"joxalmpassword\"\r\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}:{{port}}/signin/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"signin",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost"
+		},
+		{
+			"key": "port",
+			"value": "3000"
+		},
+		{
+			"key": "book",
+			"value": "api/book/"
+		}
+	]
+}
